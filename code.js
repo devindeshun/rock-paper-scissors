@@ -3,6 +3,7 @@ let computerChoice = '';
 let humanChoice = '';
 let humanScore = 0;
 let computerScore = 0;
+let streak = 0;
 
 function getComputerChoice() {
     let randomComputerChoice = Math.floor(Math.random() * 3);
@@ -10,7 +11,11 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    humanChoice = prompt("Rock, Paper, Scissors?").toLowerCase();
+    humanChoice = prompt("Rock, Paper, Scissors? ('help' for instructions)").toLowerCase();
+    if (humanChoice == 'help'){
+        console.log('Rock beats Scissors, Paper beats Rock, Scissors beat Paper. Streak is only reset when you lose! Good Luck!')
+    }
+
     if (humanChoice == "rock" || humanChoice == 'paper' || humanChoice == 'scissors') {
     } else {
         getHumanChoice();
@@ -23,17 +28,19 @@ function play(humanChoice = getHumanChoice(), computerChoice = getComputerChoice
 
     if (humanChoice == computerChoice) {
         console.log("Tie!")
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}`);
+        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}!`);
         play();
     } else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "scissors" && computerChoice == "paper")){
         console.log("You Win!");
         humanScore++;
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}`);
+        streak++;
+        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}!`);
         play();
     } else {
         console.log("You Lose!");
         computerScore++;
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}`);
+        streak = 0;
+        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}!`);
         play();
     }
 }
