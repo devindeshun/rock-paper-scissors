@@ -4,6 +4,7 @@ let humanChoice = '';
 let humanScore = 0;
 let computerScore = 0;
 let streak = 0;
+let highScore = 0;
 
 function getComputerChoice() {
     let randomComputerChoice = Math.floor(Math.random() * 3);
@@ -25,22 +26,25 @@ function getHumanChoice() {
 
 function play(humanChoice = getHumanChoice(), computerChoice = getComputerChoice()) {
     console.log(`You chose *${humanChoice}* and the computer chose *${computerChoice}*...`);
+    if (streak > highScore) {
+        highScore = streak;
+    }
 
     if (humanChoice == computerChoice) {
         console.log("Tie!")
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}!`);
+        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}! High Score: ${highScore}!`);
         play();
     } else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "scissors" && computerChoice == "paper")){
         console.log("You Win!");
         humanScore++;
         streak++;
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}!`);
+        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}! High Score: ${highScore}!`);
         play();
     } else {
         console.log("You Lose!");
         computerScore++;
         streak = 0;
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}!`);
+        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}! High Score: ${highScore}!`);
         play();
     }
 }
