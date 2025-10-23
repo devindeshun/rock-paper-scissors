@@ -9,23 +9,25 @@
   <body>
     <div class="choice-section">
         <div>
-            <h2>Player:</h2>
-            <p class="player-choice">Nothing</p>
+            <h2>Player: <span class="score player-score">0</span></h2>
+            <p class="player-choice"></p>
         </div>
         <div>
-            <h2>Computer:</h2>
-            <p class="computer-choice">Nothing</p>
+            <h2>Computer: <span class="score computer-score">0</span></h2>
+            <p class="computer-choice"></p>
         </div>
     </div>
     <div class="selection-section">
       <button class="button rock-button">Rock</button>
       <button class="button paper-button">Paper</button>
       <button class="button scissors-button">Scissors</button>
+      <button class="button help-button">Help</button>
     </div>
 
     <div class="option-section">
-        <button class="button play-button">Play</button>
-        <button class="button help-button">Help</button>
+        <!-- <button class="button play-button">Play</button> -->
+        <h1 class="outcome-text">Rock, Paper, Scissors...</h1>
+        <p class="help-text hidden">Rock beats Scissors, Paper beats Rock, Scissors beat Paper. Streak is only reset when you lose! Good Luck!</p>
     </div>
 
     <script src="code.js"></script>

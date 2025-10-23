@@ -6,46 +6,58 @@ let computerScore = 0;
 let streak = 0;
 let highScore = 0;
 
+let helpButton = document.querySelector('.help-button');
+let rockButton = document.querySelector('.rock-button');
+let paperButton = document.querySelector('.paper-button');
+let scissorsButton = document.querySelector('.scissors-button');
+let helpText = document.querySelector('.help-text');
+let playerText = document.querySelector('.player-choice');
+let computerText = document.querySelector('.computer-choice');
+let outcomeText = document.querySelector('.outcome-text');
+let playerScoreText = document.querySelector('.player-score');
+let computerScoreText = document.querySelector('.computer-score');
+
+
+helpButton.addEventListener('click', () => {
+    helpText.classList.toggle('hidden');
+});
+
+rockButton.addEventListener('click', () => {
+    playerText.textContent = "Rock";
+    play('rock');
+});
+
+paperButton.addEventListener('click', () => {
+    playerText.textContent = "Paper";
+    play('paper');
+});
+
+scissorsButton.addEventListener('click', () => {
+    playerText.textContent = "Scissors";
+    play('scissors');    
+});
+
+
+
+
+
 function getComputerChoice() {
     let randomComputerChoice = Math.floor(Math.random() * 3);
     return (computerChoice = rockPaperScissors[randomComputerChoice]);
 }
 
-function getHumanChoice() {
-    humanChoice = prompt("Rock, Paper, Scissors? ('help' for instructions)").toLowerCase();
-    if (humanChoice == 'help'){
-        console.log('Rock beats Scissors, Paper beats Rock, Scissors beat Paper. Streak is only reset when you lose! Good Luck!')
-    }
-
-    if (humanChoice == "rock" || humanChoice == 'paper' || humanChoice == 'scissors') {
-    } else {
-        getHumanChoice();
-    }
-    return humanChoice;
-}
-
-function play(humanChoice = getHumanChoice(), computerChoice = getComputerChoice()) {
-    console.log(`You chose *${humanChoice}* and the computer chose *${computerChoice}*...`);
-    if (streak > highScore) {
-        highScore = streak;
-    }
-
+function play(humanChoice, computerChoice = getComputerChoice()) {
+    computerText.textContent = (computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1));
     if (humanChoice == computerChoice) {
-        console.log("Tie!")
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}! High Score: ${highScore}!`);
-        play();
+        outcomeText.textContent = 'Tie!';
     } else if ((humanChoice == "rock" && computerChoice == "scissors") || (humanChoice == "paper" && computerChoice == "rock") || (humanChoice == "scissors" && computerChoice == "paper")){
-        console.log("You Win!");
+        outcomeText.textContent = 'You Win!';
         humanScore++;
-        streak++;
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}! High Score: ${highScore}!`);
-        play();
+        playerScoreText.textContent = humanScore;
     } else {
-        console.log("You Lose!");
+        outcomeText.textContent = 'You Lose!';
         computerScore++;
-        streak = 0;
-        console.log(`Current Score: Computer: ${computerScore}, Human: ${humanScore}. Streak: ${streak}! High Score: ${highScore}!`);
-        play();
+        computerScoreText.textContent = computerScore;
     }
 }
 
