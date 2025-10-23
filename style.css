@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+}
+
+.choice-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 35vh;
+    gap: 100px;
+    text-align: center;
+}
+
+.selection-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    gap: 80px;
+}
+
+.option-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 40px;
+}
+
+.button{
+    padding: 10px 20px;
+    border-radius: 12px;
+    color: white;
+    border: 0px;
+}
+
+.selection-section > button {
+    background-color: black;
+}
+
+.play-button {
+    background-color: green;
+    font-weight: 800;
+}
+
+.help-button{
+    background-color: skyblue;
+    color: black;
+}

@@ -49,4 +49,3 @@ function play(humanChoice = getHumanChoice(), computerChoice = getComputerChoice
     }
 }
 
-play();
